@@ -9,6 +9,7 @@ nav {
   top: 0;
   display: flex;
   justify-content: space-between;
+  z-index: 1;
 }
 
 .brand {
@@ -16,7 +17,7 @@ nav {
   display: flex;
   font-size: 2em;
   padding-top: 10px;
-  padding-left: 1.5em;
+  padding-left: 0.5em;
 }
 
 .write-new-tweet {
@@ -26,7 +27,7 @@ nav {
   font-family: 'Source Sans Pro', sans-serif;
   margin-top: 40px;
   justify-content: center;
-  padding-right: 1.5em;
+  padding-right: 1em;
 }
 
 .fa-angle-double-down {

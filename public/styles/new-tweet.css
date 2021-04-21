@@ -1,0 +1,36 @@
+button {
+  background-color: #4056A1;
+  color: #FFFFFF;
+  font-family: 'Bungee', cursive;
+}
+
+.container-button {
+  display: flex;
+  justify-content:space-between;
+  margin-top: 15px;
+  color: #545149;
+  font: bold;
+  font-family: 'Bungee', cursive;
+}
+
+.text-input {
+  border-bottom: 0.18em solid #545149;
+  font-weight: 600;
+}
+
+input[type="text"], textarea {
+  background-color : #f4f1ec; 
+  border: transparent;
+  color: #545149;
+  font-size: 1em;
+  font-weight: 600;
+  height: 1.5em;
+  width: 100%;
+}
+
+.new-tweet {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
