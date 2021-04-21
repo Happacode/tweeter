@@ -7,10 +7,10 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">  
     <!-- CSS rules to specify families
-    font-family: 'Bungee', cursive;
-    font-family: 'Source Sans Pro', sans-serif; -->
+      font-family: 'Bungee', cursive;
+      font-family: 'Source Sans Pro', sans-serif; -->
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">  
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
@@ -25,8 +25,9 @@
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
-  </head>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   
+  </head>
   <body>
     <!-- Top nav bar (fixed) -->
     <nav>
@@ -49,15 +50,15 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <h2>Compose Tweet</h2>
+        <h2>What are you humming about? Just Tweet It.</h2>
         <form method="POST" action="/tweets">
           <div class="text-input">
           <label for="tweet-text"></label>
-          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+          <textarea name="text" id="tweet-text" placeholder=" ..."></textarea>
           </div>
           <div class="container-button">
             <button type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
+            <output name="counter" class="counter" id="counter" for="tweet-text">140</output>
           </div>
         </form>
       </section>
