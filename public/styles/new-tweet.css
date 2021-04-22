@@ -32,5 +32,6 @@ input[type="text"], textarea {
   align-content: center;
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin: 5px;
+  padding: 1%;
 }
