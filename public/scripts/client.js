@@ -25,7 +25,8 @@ const data = [
     "user": {
       "name": "Descartes",
       "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
+      "handle": "@rd"
+    },
     "content": {
       "text": "Je pense , donc je suis"
     },
@@ -33,28 +34,51 @@ const data = [
   }
 ]
 
-const renderTweets = function(tweets) {
-// loops through tweets
-// calls createTweetElement for each tweet
-// takes return value and appends it to the tweets container
+const renderTweets = function (tweets) {
+  // loops through tweets
+  // calls createTweetElement for each tweet
+  // takes return value and appends it to the tweets container
 }
 
-const createTweetElement = function(tweet) {
-let $tweet = /* Your code for creating the tweet element */
-// ...
+const createTweetElement = function (tweet) {
+  /* Your code for creating the tweet element */
+  const $tweet = (`
+  <article id="tweets-container" class="archive-tweet">
+  <header class="tweet-container">
+    <div class="user-avatars"><img src = ${tweet.user.avatars}></div>
+    <div class="user-name">${tweet.user.name}</div>
+    <div class="user-handle">${tweet.user.handle}</div>
+  </header>
+  <div class="text-input" action="/tweets">
+    <div for="tweet-text">
+      Content: Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        Commodi esse tenetur suscipit rem quod quis expedita animi in, ut, incidunt, et fugiat eveniet eligendi at.
+    </div>
+  </div>
+  <footer class="container-button">
+    <div class="timeago" datetime="2021-04-20T09:24:17Z">${tweet.created_at}</div>
+    <div class="icons"><i class="fab fa-font-awesome-flag"></i><i class="fas fa-retweet"></i><i class="far fa-heart"></i></div>
+  </footer>
+  </article>
+  `);
+
   return $tweet;
 }
+
+const $tweet = createTweetElement(data);
+
+// Test / driver code (temporary)
+console.log($tweet); // to see what it looks like
+$('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 
 renderTweets(data);
 
 
-$(document).ready(function(timeago) {
+// $(document).ready(function (timeago) {
 
+//   timeago.format(data["created_at"]);
 
-  
-});
+// });
 
 
 console.log(timeago.format(1619025180007));
-
-const date = timeago.format (find object date value here)
