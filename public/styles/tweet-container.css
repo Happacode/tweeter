@@ -1,7 +1,7 @@
-tweet-container {
+.tweet-container {
   display: flex;
   padding: 2%;
-  border: 2px solid #545149;
+  border: 2px transparent;
   flex-direction: row;
   margin-bottom: 5px;
 }
@@ -40,10 +40,10 @@ footer {
 .archive-tweet {
   border: 2px solid #545149;
   margin: 5px;
-  padding: 1%;
+  padding: 2%;
   font-size: 1em;
   resize: none;
-  margin-top: 1%;
+  margin-top: 2%;
   background-color: #f4f1ec;
 }
 
@@ -60,7 +60,7 @@ footer {
   font-family: 'Bungee', cursive;
 }
 
-h5 {
+.user-avatar .user-name .user-avatar {
   flex-direction: row;
   background-color : #f4f1ec; 
   border: transparent;

@@ -66,20 +66,20 @@
       <section>
         <article class="archive-tweet">
           <header class="tweet-container">
-            <h5><i class="fas fa-angle-double-right"></i>John</h5>
-            <h5>@JLennon</h5>
+            <div class="user-avatar"><i class="fas fa-angle-double-right"></i>avatar</div>
+            <div class="user-name">user-name</div>
+            <div class="user-handle">user-handle</div>
           </header>
-          <form method="GET" action="/tweets">
-            <div class="text-input">
-              <label for="tweet-text"></label>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                  Commodi esse tenetur suscipit rem quod quis expedita animi in, ut, incidunt, et fugiat eveniet eligendi at.</p>
-            </div>
+          <div class="text-input" method="GET" action="/tweets">
+              <div for="tweet-text">
+                Content: Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                  Commodi esse tenetur suscipit rem quod quis expedita animi in, ut, incidunt, et fugiat eveniet eligendi at.
+              </div>
+          </div>
             <footer class="container-button">
-              <time class="timeago" datetime="2021-04-20T09:24:17Z">02 days ago</time>
-              <output class="icons"><i class="fab fa-font-awesome-flag"></i><i class="fas fa-retweet"></i><i class="far fa-heart"></i></output>
+              <div class="timeago" datetime="2021-04-20T09:24:17Z">02 days ago</div>
+              <div class="icons"><i class="fab fa-font-awesome-flag"></i><i class="fas fa-retweet"></i><i class="far fa-heart"></i></div>
             </footer>
-          </form>
         </article>
       </section>
     </main>
