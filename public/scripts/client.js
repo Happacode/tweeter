@@ -79,11 +79,30 @@ $('#tweets-container').append($tweet); // to add it to the page so we can make s
 renderTweets(data);
 
 
-// $(document).ready(function (timeago) {
+// refactor how tweet data is submitted using jQuery
+// add an event listener that listens for the submit event
+// prevent the default behaviour of the submit event 
+// create an AJAX POST request in client.js that sends the form data to the server
+$(document).ready(function() {
+  $('#submit-tweet').on('submit', function(event) {
+    event.preventDefault();
+    console.log(event.preventDefault());
+    
+    const formData = $(this).serialize()
 
-//   timeago.format(data["created_at"]);
+    $.ajax('/tweets/', { url: 'http://localhost:8080/tweets', method: 'POST', data: formData })
+        .then(function(response) {
+          renderTweets(response);
+        });
+  });
+});
 
-// });
 
+// Timeago function
+$(document).ready(function (timeago) {
+
+  timeago.format(data["created_at"]);
+
+});
 
 console.log(timeago.format(1619025180007));
