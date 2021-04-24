@@ -34,6 +34,16 @@ const data = [
   }
 ]
 
+const loadtweets = () => {
+  $.ajax('/tweets/', {
+    url: 'http://localhost:8080/tweets',
+    method: 'GET'
+  })
+    .then(function(response) {
+      renderTweets(response);
+    });
+};
+
 const renderTweets = function (tweets) {
   // loops through tweets
   // calls createTweetElement for each tweet
