@@ -65,7 +65,7 @@ const createTweetElement = function (tweet) {
     <div class="user-handle">${tweet.user.handle}</div>
   </header>
   <div class="text-input" action="/tweets">
-    <div for="tweet-text">
+    <div id="tweet-text">
       Content: Lorem ipsum dolor sit amet consectetur adipisicing elit. 
         Commodi esse tenetur suscipit rem quod quis expedita animi in, ut, incidunt, et fugiat eveniet eligendi at.
     </div>
@@ -96,9 +96,18 @@ renderTweets(data);
 $(document).ready(function() {
   $('#submit-tweet').on('submit', function(event) {
     event.preventDefault();
-    console.log(event.preventDefault());
-    
     const formData = $(this).serialize()
+    const tweetText = ("tweet.content.text");
+
+    if (tweetText.length > 140) {
+      alert('Your tweet is to long! Please keep below 140 character limit');
+      return;
+    }
+
+    if (tweetText.length === 0) {
+      alert('Your tweet is empty, please type in your tweet');
+      return;
+    }
 
     $.ajax('/tweets/', { url: 'http://localhost:8080/tweets', method: 'POST', data: formData })
         .then(function(response) {
