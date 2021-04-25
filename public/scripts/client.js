@@ -9,6 +9,12 @@
 /* eslint-disable */
 $(document).ready(function() {
 
+  // prevent XSS attacks with escaping
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
 
   const loadtweets = () => {
     $.ajax('/tweets/', {
@@ -36,14 +42,13 @@ $(document).ready(function() {
     const $tweet = (`
     <article id="tweets-container" class="archive-tweet">
     <header class="tweet-container">
-      <div class="user-avatars"><img src = ${tweet.user.avatars}></div>
-      <div class="user-name">${tweet.user.name}</div>
-      <div class="user-handle">${tweet.user.handle}</div>
+      <div class="user-avatars"><img src = ${escape(tweet.user.avatars)}></div>
+      <div class="user-name">${escape(tweet.user.name)}</div>
+      <div class="user-handle">${escape(tweet.user.handle)}</div>
     </header>
     <div class="text-input" action="/tweets">
       <div id="tweet-text">
-        Content: Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-          Commodi esse tenetur suscipit rem quod quis expedita animi in, ut, incidunt, et fugiat eveniet eligendi at.
+      ${escape(tweet.content.text)}
       </div>
     </div>
     <footer class="container-button">
@@ -74,18 +79,24 @@ $(document).ready(function() {
       const tweetText = ("tweet.content.text");
 
       if (tweetText.length > 140) {
-        alert('Your tweet is to long! Please keep below 140 character limit');
+        $('#error-message').html('Your tweet is to long! Please keep below 140 character limit');
+        $('#error-message').slideDown(300);
         return;
       }
 
       if (tweetText.length === 0) {
-        alert('Your tweet is empty, please type in your tweet');
+        $('#tweet-error').html('Your tweet is empty, please type in your tweet');
+        $('#tweet-error').slideDown(300);
         return;
       }
+      
+      $('#tweet-error').slideUp(300);
+      $('#tweet-text').val("");
+      $('.counter').val(140);
 
       $.ajax('/tweets/', { url: 'http://localhost:8080/tweets', method: 'POST', data: formData })
           .then(function(response) {
-            renderTweets(response);
+            loadtweets(response);
           });
     });
     loadtweets();
