@@ -28,10 +28,12 @@ input[type="text"], textarea {
   width: 100%;
 }
 
-.new-tweet {
+new-tweet {
   align-content: center;
   display: flex;
   flex-direction: column;
   margin: 5px;
   padding: 1%;
+  width: 100%;
+  font-size: 1em;
 }
