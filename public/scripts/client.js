@@ -51,8 +51,8 @@ $(document).ready(function() {
       ${escape(tweet.content.text)}
       </div>
     </div>
-    <footer class="container-button">
-      <div class="timeago" datetime="2021-04-20T09:24:17Z">${timeago(tweet.created_at)}</div>
+    <footer class="container-footer">
+      <div class="timeago" datetime="2021-04-20T09:24:17Z">${timeago.format(tweet["created_at"])}</div>
       <div class="icons"><i class="fab fa-font-awesome-flag"></i><i class="fas fa-retweet"></i><i class="far fa-heart"></i></div>
     </footer>
     </article>
@@ -60,13 +60,6 @@ $(document).ready(function() {
 
     return $tweet;
   }
-
-  const $tweet = createTweetElement(data);
-
-  $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-
-  renderTweets(data);
-
 
   // refactor how tweet data is submitted using jQuery
   // add an event listener that listens for the submit event
@@ -85,29 +78,24 @@ $(document).ready(function() {
       }
 
       if (tweetText.length === 0) {
-        $('#tweet-error').html('Your tweet is empty, please type in your tweet');
-        $('#tweet-error').slideDown(300);
+        $('#error-message').html('Your tweet is empty, please type in your tweet');
+        $('#error-message').slideDown(300);
         return;
       }
       
-      $('#tweet-error').slideUp(300);
-      $('#tweet-text').val("");
+      $('#error-message').slideUp(300);
+      $('tweetText').val("");
       $('.counter').val(140);
 
-      $.ajax('/tweets/', { url: 'http://localhost:8080/tweets', method: 'POST', data: formData })
-          .then(function(response) {
-            loadtweets(response);
-          });
+    $.ajax('/tweets/', { url: 'http://localhost:8080/tweets', method: 'POST', data: formData })
+        .then(function(response) {
+          loadtweets(response);
+        });
+      
+      $('#error-message').slideUp(300);
+      $('tweetText').val("");
+      $('.counter').val(140);
+
     });
     loadtweets();
 });
-
-
-// Timeago function
-$(document).ready(function (timeago) {
-
-  timeago.format(data["created_at"]);
-
-});
-
-console.log(timeago.format(1619025180007));
