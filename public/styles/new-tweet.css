@@ -38,13 +38,10 @@ new-tweet {
   font-size: 1em;
 }
 
-section #error-message {
+#error-message {
   z-index: 99;
-  /* display: none; */
-  /* visibility: visible; */
-  /* visibility: hidden; */
   top: 2px;
   position: absolute;
   color: white;
-  background: red;
-}
+  background: crimson;
+};

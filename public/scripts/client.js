@@ -26,11 +26,12 @@ $(document).ready(function() {
       });
   };
 
+  // loops through tweets
+  // calls createTweetElement for each tweet
+  // takes return value and appends it to the tweets container
   const renderTweets = function (tweets) {
-    // loops through tweets
-    // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container
     $('#tweets-container').empty();
+    
     for (let tweet of tweets) {
       let $tweet = createTweetElement(tweet);
       $('#tweets-container').prepend($tweet);
@@ -38,7 +39,7 @@ $(document).ready(function() {
   }
 
   const createTweetElement = function (tweet) {
-    /* Your code for creating the tweet element */
+    /* code for creating the tweet element */
     const $tweet = (`
     <article>
     <header class="tweet-container">
@@ -74,12 +75,12 @@ $(document).ready(function() {
       if (tweetText.length > 140) {
         $('#error-message').html('Your tweet is to long! Please keep below 140 character limit');
         $('#error-message').slideDown(300);
-        $('#error-message').slideUp(9000);
+        $('#error-message').slideUp(6000);
         return;
       } else if (tweetText.length === 0) {
         $('#error-message').html('Your tweet is empty, please type in your tweet');
         $('#error-message').slideDown(300);
-        $('#error-message').slideUp(9000);
+        $('#error-message').slideUp(6000);
         return;
       } else {
         $.ajax('/tweets/', { url: '/tweets', method: 'POST', data: formData })

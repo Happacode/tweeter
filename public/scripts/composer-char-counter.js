@@ -3,7 +3,7 @@
 /* eslint-disable */
 //Function expression to select elements
 $(document).ready(function() {
-  // --- our code goes here ---
+  
   $("textarea").on("input", function() {
     let maxChar = 140 - $(this).val().length;
     $(".counter").text(maxChar);

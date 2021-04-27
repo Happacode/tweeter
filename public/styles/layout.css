@@ -34,4 +34,5 @@ body {
   background-color: #f4f1ec;
   justify-content: center;
   flex-direction: column;
+  position: relative;
  }

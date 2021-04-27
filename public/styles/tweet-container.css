@@ -84,12 +84,13 @@ article:hover {
   font-weight: 300;
   justify-self: flex-end;
   height: 2.5em;
-  width: 100%;
 }
 
 .archive-text {
   overflow-wrap: break-word;
 }
+
+/* Screen width style above 1024px */
 
 @media only screen and (min-width: 1024px) {
 
@@ -101,7 +102,6 @@ article:hover {
   .container {
     width: 60%;
   }
-
 
   #tweets-container {
     margin-top: 5%;
