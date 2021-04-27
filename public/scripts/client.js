@@ -18,7 +18,7 @@ $(document).ready(function() {
 
   const loadtweets = () => {
     $.ajax('/tweets/', {
-      url: 'http://localhost:8080/tweets',
+      url: '/tweets',
       method: 'GET'
     })
       .then(function(response) {
@@ -40,14 +40,14 @@ $(document).ready(function() {
   const createTweetElement = function (tweet) {
     /* Your code for creating the tweet element */
     const $tweet = (`
-    <article id="tweets-container" class="archive-tweet">
+    <article>
     <header class="tweet-container">
       <div class="user-avatars"><img src = ${escape(tweet.user.avatars)}></div>
       <div class="user-name">${escape(tweet.user.name)}</div>
       <div class="user-handle">${escape(tweet.user.handle)}</div>
     </header>
     <div class="text-input" action="/tweets">
-      <div id="tweet-text">
+      <div class="archive-text">
       ${escape(tweet.content.text)}
       </div>
     </div>
@@ -69,32 +69,28 @@ $(document).ready(function() {
     $('#submit-tweet').on('submit', function(event) {
       event.preventDefault();
       const formData = $(this).serialize()
-      const tweetText = ("tweet.content.text");
+      const tweetText = $("#tweet-text").val();
 
       if (tweetText.length > 140) {
         $('#error-message').html('Your tweet is to long! Please keep below 140 character limit');
         $('#error-message').slideDown(300);
+        $('#error-message').slideUp(9000);
         return;
-      }
-
-      if (tweetText.length === 0) {
+      } else if (tweetText.length === 0) {
         $('#error-message').html('Your tweet is empty, please type in your tweet');
         $('#error-message').slideDown(300);
+        $('#error-message').slideUp(9000);
         return;
-      }
-      
-      $('#error-message').slideUp(300);
-      $('tweetText').val("");
-      $('.counter').val(140);
-
-    $.ajax('/tweets/', { url: 'http://localhost:8080/tweets', method: 'POST', data: formData })
+      } else {
+        $.ajax('/tweets/', { url: '/tweets', method: 'POST', data: formData })
         .then(function(response) {
           loadtweets(response);
         });
       
-      $('#error-message').slideUp(300);
-      $('tweetText').val("");
-      $('.counter').val(140);
+        $('#error-message').slideUp(300);
+        $('#tweet-text').val("");
+        $('.counter').val(140);
+      }
 
     });
     loadtweets();
